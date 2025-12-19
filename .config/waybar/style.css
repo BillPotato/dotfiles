@@ -19,6 +19,8 @@
 /* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
 #workspaces,
 #custom-uptime,
+#temperature,
+#memory,
 #cpu {
   background-color: #1a1b26;
   padding: 0.3rem 0.7rem;
@@ -43,6 +45,8 @@
 
 /* Simple Hover effects for individual left modules - BRIGHTER COLOR */
 #custom-uptime:hover,
+#temperature:hover,
+#memory:hover,
 #cpu:hover {
   background-color: rgb(41, 42, 53); /* Brighter highlight */
 }
@@ -127,6 +131,7 @@
 #bluetooth,
 #pulseaudio,
 #backlight,
+#custom-nightlight,
 #network,
 #custom-lock,
 #battery {
@@ -143,6 +148,7 @@
 #bluetooth:hover,
 #pulseaudio:hover,
 #backlight:hover,
+#custom-nightlight:hover,
 #network:hover,
 #custom-lock:hover,
 #battery:hover {
@@ -164,24 +170,24 @@
 #custom-uptime {
   color: #babbf1;
 }
+
+
+#custom-nightlight,
+#network,
+#backlight,
+#pulseaudio,
+#temperature,
 #cpu {
   color: #c6d0f5;
+}
+
+#temperature.critical {
+  color: red;
 }
 
 #clock {
   color: #99d1db;
   font-weight: 500;
-}
-
-#pulseaudio {
-  color: #c6d0f5;
-}
-#backlight {
-  color: #c6d0f5;
-}
-
-#network {
-  color: #c6d0f5;
 }
 
 #network.disconnected {

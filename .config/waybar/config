@@ -3,10 +3,13 @@
   "position": "top",
   "margin-bottom": -10,
   "spacing" : 0,
+
   "modules-left": [
   "hyprland/workspaces",
-  "custom/uptime",
-  "cpu"
+  // "custom/uptime",
+  "temperature",
+  "cpu",
+  "memory"
   ],
 
   "modules-center": ["clock"],
@@ -16,6 +19,7 @@
     "bluetooth",
     "network",
     "pulseaudio", 
+    "custom/nightlight",
     "backlight",
     "battery",
   ],
@@ -65,30 +69,38 @@
     "format-disconnected": "󰤠 ",
     "interval": 5,
     "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "nm-connection-editor"
-    // "on-click": "kitty -e nmtui"
+    // "on-click": "nm-connection-editor"
+    "on-click": "kitty -e nmtui"
 
  },
 
   "cpu": {
-    "interval": 1,
-    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+    "interval": 3,
+    // "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+    "format": " {usage:>2}%",
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
     "on-click": "ghostty -e htop"
   },
 
   "memory": {
-    "interval": 30,
-    "format": "  {used:0.1f}G/{total:0.1f}G",
+    "interval": 3,
+    "format": "  {used:0.1f}G",
     "tooltip-format": "Memory"
   },
 
+  "temperature": {
+    "critical-threshold": 60,
+    "format": " {temperatureC}° ",
+    "tooltip": false,
+    "interval": 3
+  },
+
   "custom/uptime": {
-    "format": "{}",
     "format-icon": [""], 
+    "format": "{}",
     "tooltip": false,
     "interval": 1600,
-    "exec": "$HOME/.config/waybar/scripts/uptime.sh"
+    "exec": "sleep 5 & $HOME/.config/waybar/scripts/uptime.sh"
   },
   
   "backlight": {
@@ -96,6 +108,13 @@
         "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
         "tooltip": false,
 	"on-click": "brightness-controller"
+  },
+
+  "custom/nightlight": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/nightlight.sh",
+    "interval": 1,
+    "on-click": "$HOME/.config/waybar/scripts/nightlight-toggle.sh"
   },
   
   "pulseaudio": {
@@ -133,7 +152,7 @@
   "custom/pomodoro": {
 	"format": "{}",
 	"return-type": "json",
-	"exec": "waybar-module-pomodoro --no-work-icons",
+	"exec": "waybar-module-pomodoro --no-work-icons & sleep 0.2 && waybar-module-pomodoro set-work 45",
 	"on-click": "waybar-module-pomodoro toggle",
 	"on-click-right": "waybar-module-pomodoro reset",
   },
