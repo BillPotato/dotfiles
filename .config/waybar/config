@@ -5,22 +5,22 @@
   "spacing" : 0,
 
   "modules-left": [
-  "hyprland/workspaces",
-  // "custom/uptime",
-  "temperature",
-  "cpu",
-  "memory"
+    "hyprland/workspaces",
+    "temperature",
+    "cpu",
+    "memory",
   ],
 
-  "modules-center": ["clock"],
+  "modules-center": [
+    "custom/music",
+    "clock",
+  ],
 
   "modules-right": [
-    "custom/pomodoro",
     "bluetooth",
     "network",
     "pulseaudio", 
     "custom/nightlight",
-    "backlight",
     "battery",
   ],
 
@@ -49,10 +49,12 @@
   "custom/music": {
     "format": "  {}",
     "escape": true,
-    "interval": 5,
+    "interval": 1,
     "tooltip": false,
     "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
     "on-click": "playerctl play-pause",
+    "on-double-click": "playerctl next",
+    "on-click-right": "playerctl previous",
     "max-length": 50
   },
 
@@ -89,10 +91,23 @@
   },
 
   "temperature": {
-    "critical-threshold": 60,
+    "warning-threshold": 60,
+    "critical-threshold": 80,
     "format": " {temperatureC}° ",
     "tooltip": false,
     "interval": 3
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
 
   "custom/uptime": {
@@ -104,16 +119,17 @@
   },
   
   "backlight": {
-        "format": "{icon}  {percent}%",
-        "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
-        "tooltip": false,
-	"on-click": "brightness-controller"
+    "format": "{icon}  {percent}%",
+    "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
+    "tooltip": false,
+    "on-click": "brightness-controller"
   },
 
   "custom/nightlight": {
     "format": "{}",
     "exec": "$HOME/.config/waybar/scripts/nightlight.sh",
     "interval": 1,
+    "tooltip": false,
     "on-click": "$HOME/.config/waybar/scripts/nightlight-toggle.sh"
   },
   
