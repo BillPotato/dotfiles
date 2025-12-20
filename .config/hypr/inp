@@ -1,0 +1,14 @@
+#!/bin/sh
+
+EN="keyboard-us"
+VI="unikey"
+
+check() { pidof -q fcitx5; }
+set_input() { fcitx5-remote -s "$@"; }
+toggle() { fcitx5-remote -t; }
+
+case $1 in
+vi) check && set_input "$VI" ;;
+en) check && set_input "$EN" ;;
+*) check && toggle ;;
+esac
