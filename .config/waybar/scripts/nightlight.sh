@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if pgrep -x hyprsunset >/dev/null; then
-  echo '🟡'
+  echo '🌕'
 else
-  echo '⚪'
+  echo '🌑'
 fi
