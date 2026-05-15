@@ -126,6 +126,10 @@ export PATH="$HOME/personal/scripts/:$PATH"
 # Aliases
 alias chmodx="chmod u+x"
 alias grs="git restore --staged"
+alias ..="cd .."
+alias ....="cd ../.."
 
 # Start tmux
-tmux
+if [[ -z $TMUX ]]; then
+    tmux
+fi
