@@ -122,6 +122,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add directories to PATH
 export PATH="$HOME/personal/scripts/:$PATH"
+export PATH="$HOME/flutter/bin/:$PATH"
 
 # Aliases
 alias chmodx="chmod u+x"
